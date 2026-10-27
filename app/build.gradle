@@ -307,6 +307,7 @@ dependencies {
 	implementation project(":data-store-api")
 
     implementation project (":ad-blocking-impl")
+    implementation project(":focus-mode-impl")
 
 	implementation project(":new-tab-page-impl")
 	implementation project(":new-tab-page-api")
