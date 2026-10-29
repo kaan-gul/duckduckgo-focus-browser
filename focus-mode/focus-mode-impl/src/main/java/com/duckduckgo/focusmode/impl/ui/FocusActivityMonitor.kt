@@ -17,6 +17,7 @@
 package com.duckduckgo.focusmode.impl.ui
 
 import android.app.Activity
+import android.os.Bundle
 import com.duckduckgo.app.di.AppCoroutineScope
 import com.duckduckgo.browser.api.ActivityLifecycleCallbacks
 import com.duckduckgo.common.utils.DispatcherProvider
@@ -52,14 +53,25 @@ class FocusActivityMonitor @Inject constructor(
 ) : ActivityLifecycleCallbacks {
 
     private var sessionJob: Job? = null
+    private var freshLaunch = false
+
+    // A null saved state means a brand new activity, as opposed to a rotation or a restore after the system killed the process.
+    override fun onActivityCreated(
+        activity: Activity,
+        savedInstanceState: Bundle?,
+    ) {
+        if (activity.isBrowserActivity() && savedInstanceState == null) freshLaunch = true
+    }
 
     override fun onActivityResumed(activity: Activity) {
         if (!activity.isBrowserActivity()) return
 
         val launchSource = activity.intent?.getStringExtra(FocusLaunchClassifier.LAUNCH_SOURCE_EXTRA)
+        val isFreshLaunch = freshLaunch
+        freshLaunch = false
         sessionJob?.cancel()
         sessionJob = appScope.launch(dispatchers.main()) {
-            controller.onBrowserResumed(launchSource)
+            if (isFreshLaunch) controller.onFreshLaunch(launchSource) else controller.onBrowserResumed(launchSource)
             controller.state.filterNotNull().collectLatest { state ->
                 presenter.render(activity, state, controller.currentSettings())
                 awaitNextTransition(activity, state)

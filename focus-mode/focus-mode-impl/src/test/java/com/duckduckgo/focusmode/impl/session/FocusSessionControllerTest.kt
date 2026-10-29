@@ -133,6 +133,42 @@ class FocusSessionControllerTest {
         assertEquals(1, history.recorded.size)
     }
 
+    @Test
+    fun whenFreshLaunchWhileRunningThenPreviousSessionEndsAndPickerAsksAgain() = runTest {
+        controller.onBrowserResumed("standard")
+        controller.selectDuration(120.minutes)
+        val startedAt = clock.now
+        clock.now += 10.minutes.inWholeMilliseconds
+
+        controller.onFreshLaunch("standard")
+
+        assertEquals(FocusPhase.AwaitingSelection, controller.state.value?.phase)
+        assertEquals(10.minutes.inWholeMilliseconds, history.recorded.single().durationMs)
+        assertEquals(startedAt, history.recorded.single().startedAtMs)
+    }
+
+    @Test
+    fun whenFreshLinkLaunchWhileRunningThenNewGraceStarts() = runTest {
+        controller.onBrowserResumed("standard")
+        controller.selectDuration(120.minutes)
+
+        controller.onFreshLaunch("url")
+
+        assertEquals(FocusPhase.Grace, controller.state.value?.phase)
+    }
+
+    @Test
+    fun whenResumedFromBackgroundThenSessionContinues() = runTest {
+        controller.onBrowserResumed("standard")
+        controller.selectDuration(120.minutes)
+        clock.now += 10.minutes.inWholeMilliseconds
+
+        controller.onBrowserResumed("standard")
+
+        assertEquals(FocusPhase.Running, controller.state.value?.phase)
+        assertTrue(history.recorded.isEmpty())
+    }
+
     private class FakeClock(var now: Long) : FocusClock {
         override fun nowMs(): Long = now
     }

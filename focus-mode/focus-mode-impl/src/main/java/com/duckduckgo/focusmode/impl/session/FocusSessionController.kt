@@ -54,6 +54,11 @@ class FocusSessionController @Inject constructor(
         machine.onLaunch(current, FocusLaunchClassifier.classify(launchSourceValue), now)
     }
 
+    /** A cold start of the browser always asks again: a session chosen earlier must not carry over to a new visit. */
+    suspend fun onFreshLaunch(launchSourceValue: String?) = mutate { _, machine, now ->
+        machine.onLaunch(machine.onCloseRequested(), FocusLaunchClassifier.classify(launchSourceValue), now)
+    }
+
     suspend fun tick() = mutate { current, machine, now -> machine.advance(current, now) }
 
     suspend fun selectDuration(duration: Duration) = mutate { current, machine, now ->
@@ -73,7 +78,7 @@ class FocusSessionController @Inject constructor(
 
             if (next != before.state) {
                 val after = PersistedSession(next, metaAfter(before, next, now))
-                recordIfFinished(before, next)
+                recordIfFinished(before, next, now)
                 store.saveSession(after)
                 session = after
             }
@@ -97,13 +102,14 @@ class FocusSessionController @Inject constructor(
     private suspend fun recordIfFinished(
         before: PersistedSession,
         next: FocusSessionState,
+        now: Long,
     ) {
         if (!before.state.phase.isInSession() || next.phase.isInSession()) return
-        // The planned end, not "now": a session that lapsed while the app was closed must not be credited with the time away.
+        // Never later than the planned end: a session that lapsed while the app was closed must not be credited with the time away.
         history.record(
             FocusSession(
                 startedAtMs = before.meta.startedAtMs,
-                endedAtMs = before.meta.plannedEndMs,
+                endedAtMs = minOf(now, before.meta.plannedEndMs),
                 plannedMs = before.meta.plannedMs,
                 extended = before.meta.extended,
             ),

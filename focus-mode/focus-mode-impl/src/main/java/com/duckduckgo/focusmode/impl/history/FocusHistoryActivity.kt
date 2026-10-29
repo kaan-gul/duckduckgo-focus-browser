@@ -140,7 +140,7 @@ class FocusHistoryActivity : DuckDuckGoActivity() {
                 session.startedAtMs,
                 DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_SHOW_TIME or DateUtils.FORMAT_ABBREV_ALL,
             )
-            holder.item.setPrimaryText(formatFocusDuration(session.plannedMs.milliseconds))
+            holder.item.setPrimaryText(formatFocusDuration(session.durationMs.milliseconds))
             holder.item.setSecondaryText(
                 if (session.extended) "$started · ${getString(R.string.focus_history_extended)}" else started,
             )

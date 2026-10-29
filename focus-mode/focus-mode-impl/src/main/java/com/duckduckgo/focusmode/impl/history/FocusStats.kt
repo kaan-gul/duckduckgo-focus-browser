@@ -38,13 +38,13 @@ data class FocusStats(
             val startOfToday = Instant.ofEpochMilli(nowMs).atZone(zone).toLocalDate().atStartOfDay(zone).toInstant().toEpochMilli()
             val startOfWeek = Instant.ofEpochMilli(startOfToday).atZone(zone).minusDays(WEEK_DAYS).toInstant().toEpochMilli()
 
-            fun total(since: Long) = sessions.filter { it.startedAtMs >= since }.sumOf { it.plannedMs }.milliseconds
+            fun total(since: Long) = sessions.filter { it.startedAtMs >= since }.sumOf { it.durationMs }.milliseconds
 
             return FocusStats(
                 today = total(startOfToday),
                 lastSevenDays = total(startOfWeek),
                 sessionCount = sessions.size,
-                averageSession = if (sessions.isEmpty()) Duration.ZERO else (sessions.sumOf { it.plannedMs } / sessions.size).milliseconds,
+                averageSession = if (sessions.isEmpty()) Duration.ZERO else (sessions.sumOf { it.durationMs } / sessions.size).milliseconds,
             )
         }
     }

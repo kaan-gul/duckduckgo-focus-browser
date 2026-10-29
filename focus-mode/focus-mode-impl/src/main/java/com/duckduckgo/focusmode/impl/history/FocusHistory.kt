@@ -35,7 +35,10 @@ data class FocusSession(
     val endedAtMs: Long,
     val plannedMs: Long,
     val extended: Boolean,
-)
+) {
+    /** Time actually spent, which is shorter than [plannedMs] when the session was ended early. */
+    val durationMs: Long get() = endedAtMs - startedAtMs
+}
 
 interface FocusHistoryRepository {
     fun sessions(): Flow<List<FocusSession>>
