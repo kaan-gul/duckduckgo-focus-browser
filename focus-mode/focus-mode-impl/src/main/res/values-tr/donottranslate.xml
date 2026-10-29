@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2026 Kaan Gül
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+    <string name="focus_duration_minutes">%1$d dk</string>
+    <string name="focus_duration_hours">%1$d sa</string>
+    <string name="focus_duration_hours_minutes">%1$d sa %2$d dk</string>
+
+    <string name="focus_option_1_min">1 dk</string>
+    <string name="focus_option_3_min">3 dk</string>
+    <string name="focus_option_5_min">5 dk</string>
+    <string name="focus_option_10_min">10 dk</string>
+    <string name="focus_option_15_min">15 dk</string>
+
+    <string name="focus_picker_title">Ne kadar odaklanacaksın?</string>
+    <string name="focus_picker_subtitle">Taramaya başlamak için bir süre seç.</string>
+    <string name="focus_picker_custom">Özel</string>
+    <string name="focus_picker_custom_hint">Dakika</string>
+    <string name="focus_picker_custom_error">1 ile %1$d arasında bir sayı gir</string>
+    <string name="focus_picker_start">Başla</string>
+
+    <string name="focus_warning_toast">Odak seansın birkaç saniye içinde bitiyor</string>
+
+    <string name="focus_extension_title">Süre doldu</string>
+    <string name="focus_extension_message">İşini bitirmek için biraz daha süreye mi ihtiyacın var? Bu seansı bir kez, %1$s uzatabilirsin.</string>
+    <string name="focus_extension_positive">%1$s uzat</string>
+    <string name="focus_extension_negative">Tarayıcıyı kapat</string>
+
+    <string name="focus_settings_title">Odak modu</string>
+    <string name="focus_settings_extension_toggle">Seans başına bir uzatmaya izin ver</string>
+    <string name="focus_settings_extension_duration">Uzatma süresi</string>
+    <string name="focus_settings_grace_duration">Başka uygulamadan açılan linklerde başlangıç süresi</string>
+    <string name="focus_settings_grace_description">Bir link tarayıcıyı açtığında önce kısa bir seans başlar, bitince süre seçmeni ister.</string>
+    <string name="focus_settings_history">Seans geçmişi</string>
+    <string name="focus_settings_apply">Tamam</string>
+    <string name="focus_settings_cancel">Vazgeç</string>
+
+    <string name="focus_history_title">Seans geçmişi</string>
+    <string name="focus_history_today">Bugün</string>
+    <string name="focus_history_week">Son 7 gün</string>
+    <string name="focus_history_sessions">Seans</string>
+    <string name="focus_history_average">Ortalama seans</string>
+    <string name="focus_history_recent">Son seanslar</string>
+    <string name="focus_history_empty">Henüz seans yok. İlk odak seansından sonra burada görünecek.</string>
+    <string name="focus_history_extended">Uzatıldı</string>
+    <string name="focus_history_clear">Geçmişi temizle</string>
+    <string name="focus_history_clear_title">Seans geçmişi temizlensin mi?</string>
+    <string name="focus_history_clear_message">Bu cihazdaki tüm odak seansı kayıtları silinir.</string>
+    <string name="focus_history_clear_confirm">Temizle</string>
+
+</resources>

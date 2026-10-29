@@ -20,7 +20,7 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 
-internal enum class FocusPhase {
+enum class FocusPhase {
     Idle,
     Grace,
     AwaitingSelection,
@@ -32,13 +32,13 @@ internal enum class FocusPhase {
     val isActive: Boolean get() = this != Idle && this != Expired
 }
 
-internal data class FocusSessionState(
+data class FocusSessionState(
     val phase: FocusPhase = FocusPhase.Idle,
     val endsAtMs: Long = 0L,
     val extensionUsed: Boolean = false,
 )
 
-internal data class FocusSettings(
+data class FocusSettings(
     val graceDuration: Duration = 3.minutes,
     val extensionEnabled: Boolean = true,
     val extensionDuration: Duration = 5.minutes,

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2026 Kaan Gül
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+    <string name="focus_duration_minutes">%1$d min</string>
+    <string name="focus_duration_hours">%1$d h</string>
+    <string name="focus_duration_hours_minutes">%1$d h %2$d min</string>
+
+    <string name="focus_option_1_min">1 min</string>
+    <string name="focus_option_3_min">3 min</string>
+    <string name="focus_option_5_min">5 min</string>
+    <string name="focus_option_10_min">10 min</string>
+    <string name="focus_option_15_min">15 min</string>
+
+    <string name="focus_picker_title">How long do you want to focus?</string>
+    <string name="focus_picker_subtitle">Pick a session length to start browsing.</string>
+    <string name="focus_picker_custom">Custom</string>
+    <string name="focus_picker_custom_hint">Minutes</string>
+    <string name="focus_picker_custom_error">Enter a number between 1 and %1$d</string>
+    <string name="focus_picker_start">Start</string>
+
+    <string name="focus_warning_toast">Your focus session ends in a few seconds</string>
+
+    <string name="focus_extension_title">Time is up</string>
+    <string name="focus_extension_message">Need a little longer to finish? You can extend this session once, by %1$s.</string>
+    <string name="focus_extension_positive">Extend by %1$s</string>
+    <string name="focus_extension_negative">Close browser</string>
+
+    <string name="focus_settings_title">Focus mode</string>
+    <string name="focus_settings_extension_toggle">Allow one extension per session</string>
+    <string name="focus_settings_extension_duration">Extension length</string>
+    <string name="focus_settings_grace_duration">Starting time for links opened from other apps</string>
+    <string name="focus_settings_grace_description">When a link opens the browser, it starts a short session first and asks for a duration when it ends.</string>
+    <string name="focus_settings_history">Session history</string>
+    <string name="focus_settings_apply">OK</string>
+    <string name="focus_settings_cancel">Cancel</string>
+
+    <string name="focus_history_title">Session history</string>
+    <string name="focus_history_today">Today</string>
+    <string name="focus_history_week">Last 7 days</string>
+    <string name="focus_history_sessions">Sessions</string>
+    <string name="focus_history_average">Average session</string>
+    <string name="focus_history_recent">Recent sessions</string>
+    <string name="focus_history_empty">No sessions yet. They will show up here after your first focus session.</string>
+    <string name="focus_history_extended">Extended</string>
+    <string name="focus_history_clear">Clear history</string>
+    <string name="focus_history_clear_title">Clear session history?</string>
+    <string name="focus_history_clear_message">This removes all recorded focus sessions from this device.</string>
+    <string name="focus_history_clear_confirm">Clear</string>
+
+</resources>

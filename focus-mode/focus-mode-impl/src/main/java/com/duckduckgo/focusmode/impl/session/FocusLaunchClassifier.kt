@@ -16,12 +16,12 @@
 
 package com.duckduckgo.focusmode.impl.session
 
-internal enum class LaunchSource {
+enum class LaunchSource {
     Manual,
     External,
 }
 
-internal object FocusLaunchClassifier {
+object FocusLaunchClassifier {
 
     // :app owns this key and its values (BrowserActivity, LaunchSourceValues) and no module may depend on :app.
     const val LAUNCH_SOURCE_EXTRA = "LAUNCH_SOURCE_PIXEL_VALUE"

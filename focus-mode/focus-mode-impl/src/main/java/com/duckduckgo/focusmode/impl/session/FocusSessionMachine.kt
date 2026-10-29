@@ -18,7 +18,7 @@ package com.duckduckgo.focusmode.impl.session
 
 import kotlin.time.Duration
 
-internal class FocusSessionMachine(private val settings: FocusSettings = FocusSettings()) {
+class FocusSessionMachine(private val settings: FocusSettings = FocusSettings()) {
 
     fun onLaunch(
         state: FocusSessionState,
